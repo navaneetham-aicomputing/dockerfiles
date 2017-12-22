@@ -2,12 +2,11 @@ FROM arm64v8/alpine:3.7
 
 LABEL maintainer="Philipp Michalski <mail@phalski.com>" version="latest"
 
-RUN apk add --no-cache python3 libxml2 libxslt py3-lxml openssl \
-  && apk add --no-cache --virtual build-dependencies alpine-sdk libxslt-dev libxml2-dev libffi-dev python3-dev \
-  openssl-dev \
+RUN apk add --no-cache python3 libxml2 libxslt py3-lxml openssl mariadb-client-libs \
+  && apk add --no-cache --virtual build-dependencies alpine-sdk python3-dev libxslt-dev libxml2-dev libffi-dev mariadb-dev \
   && python3 -m ensurepip \
   && pip3 install --no-cache-dir --upgrade pip setuptools \
-  && pip3 install --no-cache-dir scrapy scrapyd \
+  && pip3 install --no-cache-dir scrapy scrapyd mysqlclient \
   && apk del build-dependencies \
   && rm -rf /root/.cache
 
