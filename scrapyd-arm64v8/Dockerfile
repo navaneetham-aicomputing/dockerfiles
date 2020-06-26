@@ -6,7 +6,7 @@ RUN apk add --no-cache python3 libxml2 libxslt py3-lxml openssl mariadb-client-l
   && apk add --no-cache --virtual build-dependencies alpine-sdk python3-dev libxslt-dev libxml2-dev libffi-dev mariadb-dev \
   && python3 -m ensurepip \
   && pip3 install --no-cache-dir --upgrade pip setuptools \
-  && pip3 install --no-cache-dir scrapy scrapyd mysqlclient \
+  && pip3 install --no-cache-dir scrapy scrapyd pymongo \
   && apk del build-dependencies \
   && rm -rf /root/.cache
 
